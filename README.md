@@ -17,13 +17,13 @@ This Python library requires that the *ghcnd_all.tar.gz* file be downloaded from
 
 I suggest downloading both the data and doc files to different folders with a common root. The data tarball (*ghcnd_all.tar.gz*) will expand to create a folder with over 100,000 files (one for each GHCN station), so you might want to avoid opening that folder with a file browser.
 
-On my Linux system the folders are arranged like this:
+On my linux system the folders are arranged like this:
 - /media/data/GHCN/ghcnd_all/..data files..
 - /media/data/GHCN/docs/..doc files..
 
 Do something like the following:
 
-1. Create the common root folder, e.g., 'GHCN'; and create the docs folder under it.
+1. Create the common root folder—e.g., 'GHCN'—and create the docs folder under it.
 
 2. Download *ghcnd-inventory.txt* and *ghcnd-stations.txt* from the data website directly to the docs folder.
 
