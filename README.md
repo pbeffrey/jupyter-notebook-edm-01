@@ -25,6 +25,18 @@ This Python library requires that the *ghcnd_all.tar.gz* file be downloaded from
 
 ---
 
+## Performance
+
+> **TODO** Describe the performance advantages of this library.
+
+---
+
+## Future Improvements
+
+> **TODO** Describe planned improvements, including C++ components.
+
+---
+
 ## Author
 
 Phil Beffrey
