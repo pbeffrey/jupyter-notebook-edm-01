@@ -12,6 +12,11 @@ import datetime
 import math
 import pandas as pd
 
+__author__ = "Phil Beffrey"
+__copyright__ = "Copyright (c) 2019, Phil Beffrey"
+__license__ = "MIT"
+__version__ = "0.0.1"
+
 
 def _valsfromstr(line):
     """Create tuple of values parsed from a line in a DLY data file.

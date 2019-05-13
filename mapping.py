@@ -11,6 +11,11 @@ import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point  #, Polygon
 
+__author__ = "Phil Beffrey"
+__copyright__ = "Copyright (c) 2019, Phil Beffrey"
+__license__ = "MIT"
+__version__ = "0.0.1"
+
 
 def latlng_index(lat, lng, mult=1 / 15):
     """Convert latitude and longitude to 'indexes'.

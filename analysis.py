@@ -10,6 +10,11 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
+__author__ = "Phil Beffrey"
+__copyright__ = "Copyright (c) 2019, Phil Beffrey"
+__license__ = "MIT"
+__version__ = "0.0.1"
+
 
 def linear_regression(x, y):
     """Fit the {x, y} data with a line.
