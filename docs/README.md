@@ -1,6 +1,6 @@
 # GHCN Analysis Getting Started
 
-### Here's a Jupyter Notebook that shows off this library: [*edm_01.ipynb*](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/edm_01.ipynb)
+### Here's a Jupyter Notebook that shows off this library: [*edm_01.ipynb*](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/docs/edm_01.ipynb)
 
 #### *Note that this isn't really ready for release, I'm just experimenting with creating a public repository and using GitHub Pages. But if you've stumbled into it and would like to try it, please email and I'll get you a known working version. This one might not be.*
 
@@ -9,7 +9,7 @@
 The Global Historical Climate Network (GHCN) 
 comprises over 100,000 stations in 180 countries and territories collecting daily climate data summaries including: maximum and minimum temperature, precipitation, snowfall, etc. The current total size of the uncompressed text-based data is almost 30GB.
 
-This project attempts to take the grunt work out of loading and processing the 'raw' data into a form that's easier to access using NumPy and Pandas within a Jupyter Notebook. It consists of a small Python library for loading data from a *local* copy of the GHCN-Daily repository along with a sample Jupyter Notebook illustrating its use—see [*edm_01.ipynb*](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/edm_01.ipynb) for a static version of that Notebook.
+This project attempts to take the grunt work out of loading and processing the 'raw' data into a form that's easier to access using NumPy and Pandas within a Jupyter Notebook. It consists of a small Python library for loading data from a *local* copy of the GHCN-Daily repository along with a sample Jupyter Notebook illustrating its use—see [*edm_01.ipynb*](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/docs/edm_01.ipynb) for a static version of that Notebook.
 
 A description of GHCN-D can be found [here](https://www.ncdc.noaa.gov/ghcn-daily-description) and you can download the data from [here](https://www1.ncdc.noaa.gov/pub/data/ghcn/daily/), or from ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/
 
