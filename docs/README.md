@@ -43,7 +43,7 @@ Do something like the following:
 
 > **TODO** Create a general overview of the library and how it's used.
 
-[MIT License](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/LICENSE.md)
+[MIT License](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/docs/LICENSE.md)
 
 ---
 
