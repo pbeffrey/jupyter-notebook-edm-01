@@ -56,44 +56,45 @@ class Mapping:
         bucket_id = ((index['lngIndex']) << 4) | index['latIndex']
         self.buckets[bucket_id]['list'].append(loc)
 
-    def show(self):
+    def show(self, show_buckets=False):
         """Add the geometry and draw the map.
 
         """
+        ax = self.world.plot(figsize=(15, 7.5), cmap='Pastel1', alpha=0.65)
+
         df = pd.DataFrame({'id': self.locations['ids']})
         geometry = [
             Point(x, y)
             for x, y in zip(self.locations['lngs'], self.locations['lats'])
         ]
         gdf1 = gpd.GeoDataFrame(df, geometry=geometry)
+        gdf1.plot(ax=ax, markersize=0.35, alpha=0.5)
 
-        names = []
-        lats = []
-        lngs = []
-        for i in self.buckets:
-            if i['list']:
-                names.append('bucket-' + str(i))
+        if show_buckets:
+            names = []
+            lats = []
+            lngs = []
+            for i in self.buckets:
+                if i['list']:
+                    names.append('bucket-' + str(i))
 
-                avg_lat = 0
-                avg_lng = 0
-                for j in i['list']:
-                    avg_lat += j['lat']
-                    avg_lng += j['lng']
+                    avg_lat = 0
+                    avg_lng = 0
+                    for j in i['list']:
+                        avg_lat += j['lat']
+                        avg_lng += j['lng']
 
-                i['data']['lat'] = avg_lat / len(i['list'])
-                i['data']['lng'] = avg_lng / len(i['list'])
+                    i['data']['lat'] = avg_lat / len(i['list'])
+                    i['data']['lng'] = avg_lng / len(i['list'])
 
-                lats.append(i['data']['lat'])
-                lngs.append(i['data']['lng'])
+                    lats.append(i['data']['lat'])
+                    lngs.append(i['data']['lng'])
 
-        # names = ['' for i in range(len(avg_lat))]
-        df = pd.DataFrame({'id': names})
-        geometry = [Point(x, y) for x, y in zip(lngs, lats)]
-        gdf2 = gpd.GeoDataFrame(df, geometry=geometry)
-
-        ax = self.world.plot(figsize=(15, 7.5), cmap='Pastel1', alpha=0.65)
-        gdf1.plot(ax=ax, markersize=0.25, alpha=0.5)
-        gdf2.plot(ax=ax, markersize=25.0, alpha=0.25, color='r')
+            # names = ['' for i in range(len(avg_lat))]
+            df = pd.DataFrame({'id': names})
+            geometry = [Point(x, y) for x, y in zip(lngs, lats)]
+            gdf2 = gpd.GeoDataFrame(df, geometry=geometry)
+            gdf2.plot(ax=ax, markersize=25.0, alpha=0.25, color='r')
 
         plt.show()
 

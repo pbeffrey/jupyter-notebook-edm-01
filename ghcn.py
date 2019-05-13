@@ -12,8 +12,6 @@ import datetime
 import math
 import pandas as pd
 
-import analysis as anly
-
 
 def _valsfromstr(line):
     """Create tuple of values parsed from a line in a DLY data file.
@@ -401,58 +399,51 @@ def report_elapsed(t_bgn, n_files, n_lines):
           " n_files = " + str(n_files) + " n_lines = " + str(n_lines))
 
 
-def only_1st_and_lst(years):
-    """Here's your missing docstring.
+def only_1st_and_lst(items):
+    """Return (at most) the first and last items from a list.
 
     """
-    # print(str(years[0]) + '-' + str(years[len(years) - 1]))
-    years_len = len(years)
-    if years_len == 0:
+    # print(str(items[0]) + '-' + str(items[len(items) - 1]))
+    items_len = len(items)
+    if items_len == 0:
         return False
     # Plot only 1st and last.
-    return years if years_len == 1 else years[::years_len - 1]
+    return items if items_len == 1 else items[::items_len - 1]
 
 
-def process_a_station(ghcn_obj, id_):
-    """What it says.
+def to_dataframe(ghcn_obj, id_):
+    """Convert station element to Pandas DataFrame.
 
     """
     filename = id_ + '.dly'
-    ghcn_data = ghcn_obj.file_to_data(filename, ghcn_obj.elements, min_yrs=50)
+    ghcn_data = ghcn_obj.file_to_data(filename, ghcn_obj.elements)
     # Skip file if it doesn't have the data we're looking for.
     if not ghcn_data['data']:
-        return False
+        return {}
 
     # (!!!) Only handling the first element here.
     df = ghcndata_to_dataframe(ghcn_data['data'][0], ghcn_obj.elements[0])
-    years = [a for a in ghcn_data['data'][0][ghcn_obj.elements[0]]]
-    if not years:
-        return
-
-    years = only_1st_and_lst(years)
-    anly.plot_years(df, id_, years)
-    # plt.show()
-
-    return True
+    return {'ghcn_data': ghcn_data, 'df': df}
 
 
-def for_each_station(ghcn_obj, stations, t_bgn=time.time()):
+def for_each_station(ghcn_obj,
+                     stations,
+                     convert_fn,
+                     process_fn,
+                     t_bgn=time.time()):
     """What it says.
 
     """
     n_files = 0
     n_lines = 0
     for item in stations:
-        """
-        if n_files > 3:
-            break
-        if n_files < 3:
-            n_files += 1
+        obj = convert_fn(ghcn_obj, item['id'])
+        try:
+            obj['ghcn_data']
+        except KeyError:
             continue
-        """
 
-        if not process_a_station(ghcn_obj, item['id']):
-            continue
+        process_fn(obj)
 
         n_files += 1
         n_lines += ghcn_obj.n_lines

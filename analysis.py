@@ -27,7 +27,7 @@ def linear_regression(x, y):
 
 
 def polynomial_regression(x, y, deg):
-    """Just what it says.
+    """Fit the {x, y} data with a curve.
 
     """
     poly_features = PolynomialFeatures(degree=deg, include_bias=False)
@@ -36,7 +36,8 @@ def polynomial_regression(x, y, deg):
     lin_reg = LinearRegression()
     lin_reg.fit(x_poly, y)
 
-    x_new = np.linspace(0, 365, 366).reshape(366, 1)
+    length = len(x)
+    x_new = np.linspace(0, length - 1, length).reshape(length, 1)
     x_new_poly = poly_features.transform(x_new)
     y_new = lin_reg.predict(x_new_poly)
     return {'x': x_new, 'y': y_new}
@@ -46,7 +47,7 @@ PLOT_LAYOUT = []
 PLOT_LAYOUT_INDEX = 0
 
 
-def plot_years(df, id_, years=None):
+def plot_years(df, id_, fit_fn, years=None):
     """Plot selected years for a station.
 
     """
@@ -77,7 +78,7 @@ def plot_years(df, id_, years=None):
 
         # degree=5 seems about right for yearly TMAX data.
         # (!) But need to pad with data from prev and next years.
-        result = polynomial_regression(X, y, 5)
+        result = fit_fn(X, y, 5)
         ax.plot(result['x'],
                 result['y'],
                 "r-",
