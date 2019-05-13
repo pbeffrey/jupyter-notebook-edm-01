@@ -1,5 +1,11 @@
 # GHCN Analysis Getting Started
 
+### Here's a Jupyter Notebook that shows off this library: [*edm_01.ipynb*](https://github.com/pbeffrey/jupyter-notebook-edm-01/blob/master/edm_01.ipynb)
+
+#### *Note that this isn't really ready for release, I'm just experimenting with creating a public repository and using GitHub Pages. But if you've stumbled into it and would like to try it, please email and I'll get you a known working version. This one might not be.*
+
+---
+
 The Global Historical Climate Network (GHCN) 
 comprises over 100,000 stations in 180 countries and territories collecting daily climate data summaries including: maximum and minimum temperature, precipitation, snowfall, etc. The current total size of the uncompressed text-based data is almost 30GB.
 

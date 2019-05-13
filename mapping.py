@@ -44,8 +44,6 @@ class Mapping:
 
         path = gpd.datasets.get_path('naturalearth_lowres')
         self.world = gpd.read_file(path)
-        # Add a column we'll use later
-        self.world['gdp_pp'] = self.world['gdp_md_est'] / self.world['pop_est']
 
     def add_location(self, loc):
         """Add a {lat, lng} point to be plotted.

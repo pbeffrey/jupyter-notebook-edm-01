@@ -20,13 +20,13 @@ def linear_regression(x, y):
     """Fit the {x, y} data with a line.
 
     """
-    x_b = np.c_[np.ones((len(x), 1)), x]  # add x0 = 1 to each instance
-    z = np.linalg.inv(x_b.T.dot(x_b)).dot(x_b.T).dot(y)
+    x_1 = np.c_[np.ones((len(x), 1)), x]  # add x0 = 1 to each instance
+    z = np.linalg.inv(x_1.T.dot(x_1)).dot(x_1.T).dot(y)
     # print(z)
 
     x_new = np.array([[0], [len(x)]])
-    x_new_b = np.c_[np.ones((2, 1)), x_new]
-    y_predict = x_new_b.dot(z)
+    x_new_1 = np.c_[np.ones((2, 1)), x_new]
+    y_predict = x_new_1.dot(z)
     # print(y_predict)
     return {'x': x_new, 'y': y_predict}
 
