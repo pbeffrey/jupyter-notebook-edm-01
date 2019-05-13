@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 
 
 def linear_regression(x, y):
-    """Just what it says.
+    """Fit the {x, y} data with a line.
 
     """
     x_b = np.c_[np.ones((len(x), 1)), x]  # add x0 = 1 to each instance

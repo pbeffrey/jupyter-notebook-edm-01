@@ -97,35 +97,3 @@ class Mapping:
             gdf2.plot(ax=ax, markersize=25.0, alpha=0.25, color='r')
 
         plt.show()
-
-
-def _mapping_test():
-    """mapping test
-
-    """
-    path = gpd.datasets.get_path('naturalearth_lowres')
-    world = gpd.read_file(path)
-    # df = gpd.read_file(path)
-
-    # Add a column we'll use later
-    # df['gdp_pp'] = df['gdp_md_est'] / df['pop_est']
-
-    df = pd.DataFrame({
-        'City': ['Buenos Aires', 'Brasilia', 'Santiago', 'Bogota', 'Caracas'],
-        'Country': ['Argentina', 'Brazil', 'Chile', 'Colombia', 'Venezuela'],
-        'Latitude': [-34.58, -15.78, -33.45, 4.60, 10.48],
-        'Longitude': [-58.66, -47.91, -70.66, -74.08, -66.86]
-    })
-    # Plotted geometry must have the same lenght as the
-    # geometry entries in the DataFrame. (!)
-    #...
-    geometry = [Point(x, y) for x, y in zip(df.Longitude, df.Latitude)]
-    gdf = gpd.GeoDataFrame(df, geometry=geometry)
-
-    ax = world.plot(figsize=(15, 7.5), cmap='Pastel1')
-    gdf.plot(ax=ax)
-
-    plt.show()
-
-
-# _mapping_test()

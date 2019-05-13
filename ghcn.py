@@ -431,7 +431,7 @@ def for_each_station(ghcn_obj,
                      convert_fn,
                      process_fn,
                      t_bgn=time.time()):
-    """What it says.
+    """Loop each station, calling convert_fn and process_fn.
 
     """
     n_files = 0
